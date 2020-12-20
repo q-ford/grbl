@@ -72,7 +72,7 @@
   #error "USE_SPINDLE_DIR_AS_ENABLE_PIN may only be used with VARIABLE_SPINDLE enabled"
 #endif
 
-#if defined(USE_SPINDLE_DIR_AS_ENABLE_PIN) && !defined(CPU_MAP_ATMEGA328P)
+#if (defined(USE_SPINDLE_DIR_AS_ENABLE_PIN) && !defined(CPU_MAP_ATMEGA328P)) && !defined(DUAL_AXIS_CUSTOM_SHIELD)
   #error "USE_SPINDLE_DIR_AS_ENABLE_PIN may only be used with a 328p processor"
 #endif
 
@@ -121,13 +121,13 @@
   #if defined(DUAL_AXIS_CONFIG_CNC_SHIELD_CLONE) && defined(DUAL_AXIS_CONFIG_PROTONEER_V3_51)
     #error "More than one dual axis configuration found. Select one."
   #endif
-  #if !defined(DUAL_AXIS_CONFIG_CNC_SHIELD_CLONE) && !defined(DUAL_AXIS_CONFIG_PROTONEER_V3_51)
+  #if !(defined(DUAL_AXIS_CONFIG_CNC_SHIELD_CLONE) || defined(DUAL_AXIS_CONFIG_PROTONEER_V3_51) || defined(DUAL_AXIS_CUSTOM_SHIELD) )
     #error "No supported dual axis configuration found. Select one."
   #endif
   #if defined(COREXY)
     #error "CORE XY not supported with dual axis feature."
   #endif
-  #if defined(USE_SPINDLE_DIR_AS_ENABLE_PIN)
+  #if defined(USE_SPINDLE_DIR_AS_ENABLE_PIN) && !defined(DUAL_AXIS_CUSTOM_SHIELD)
     #error "USE_SPINDLE_DIR_AS_ENABLE_PIN not supported with dual axis feature."
   #endif
   #if defined(ENABLE_M7)

@@ -34,8 +34,8 @@
 // NOTE: OEMs can avoid the need to maintain/update the defaults.h and cpu_map.h files and use only
 // one configuration file by placing their specific defaults and pin map at the bottom of this file.
 // If doing so, simply comment out these two defines and see instructions below.
-#define DEFAULTS_GENERIC
-#define CPU_MAP_ATMEGA328P // Arduino Uno CPU
+#define DEFAULTS_EW
+#define CPU_MAP_ATMEGA2560
 
 // Serial baud rate
 // #define BAUD_RATE 230400
@@ -357,7 +357,7 @@
 // NOTE: BEWARE! The Arduino bootloader toggles the D13 pin when it powers up. If you flash Grbl with
 // a programmer (you can use a spare Arduino as "Arduino as ISP". Search the web on how to wire this.),
 // this D13 LED toggling should go away. We haven't tested this though. Please report how it goes!
-// #define USE_SPINDLE_DIR_AS_ENABLE_PIN // Default disabled. Uncomment to enable.
+#define USE_SPINDLE_DIR_AS_ENABLE_PIN // Default disabled. Uncomment to enable.
 
 // Alters the behavior of the spindle enable pin with the USE_SPINDLE_DIR_AS_ENABLE_PIN option . By default,
 // Grbl will not disable the enable pin if spindle speed is zero and M3/4 is active, but still sets the PWM 
@@ -638,10 +638,10 @@
 // run out of flash to fit on an Arduino 328p/Uno. Only X and Y axes are supported. Variable
 // spindle/laser mode IS supported, but only for one config option. Core XY, spindle direction
 // pin, and M7 mist coolant are disabled/not supported.
-// #define ENABLE_DUAL_AXIS	// Default disabled. Uncomment to enable.
+#define ENABLE_DUAL_AXIS	// Default disabled. Uncomment to enable.
 
 // Select the one axis to mirror another motor. Only X and Y axis is supported at this time.
-#define DUAL_AXIS_SELECT  X_AXIS  // Must be either X_AXIS or Y_AXIS
+#define DUAL_AXIS_SELECT  Y_AXIS  // Must be either X_AXIS or Y_AXIS
 
 // To prevent the homing cycle from racking the dual axis, when one limit triggers before the
 // other due to switch failure or noise, the homing cycle will automatically abort if the second 
@@ -659,7 +659,7 @@
 // NOTE: Protoneer CNC Shield v3.51 has A.STP and A.DIR wired to pins A4 and A3 respectively.
 // The variable spindle (i.e. laser mode) build option works and may be enabled or disabled.
 // Coolant pin A3 is moved to D13, replacing spindle direction.
-#define DUAL_AXIS_CONFIG_PROTONEER_V3_51    // Uncomment to select. Comment other configs.
+// #define DUAL_AXIS_CONFIG_PROTONEER_V3_51    // Uncomment to select. Comment other configs.
 
 // NOTE: Arduino CNC Shield Clone (Originally Protoneer v3.0) has A.STP and A.DIR wired to 
 // D12 and D13, respectively. With the limit pins and stepper enable pin on this same port,
@@ -673,6 +673,8 @@
 // on pins D9/D10 (as [X1,Z]/[X2,Y] or [X,Y2]/[Y1,Z]), home each axis independently, and 
 // updating lots of code to ensure everything is running correctly.
 // #define DUAL_AXIS_CONFIG_CNC_SHIELD_CLONE  // Uncomment to select. Comment other configs.
+
+#define DUAL_AXIS_CUSTOM_SHIELD // Uncomment to select. Comment other configs.
 
 
 /* ---------------------------------------------------------------------------------------
