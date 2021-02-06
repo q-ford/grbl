@@ -280,9 +280,9 @@
   #define DIRECTION_MASK    ((1<<X_DIRECTION_BIT)|(1<<Y_DIRECTION_BIT)|(1<<Z_DIRECTION_BIT)) // All direction bits
 
   // Define stepper driver enable/disable output pin.
-  #define STEPPERS_DISABLE_DDR    DDRC
-  #define STEPPERS_DISABLE_PORT   PORTC
-  #define STEPPERS_DISABLE_BIT    0
+  #define STEPPERS_DISABLE_DDR    DDRE
+  #define STEPPERS_DISABLE_PORT   PORTE
+  #define STEPPERS_DISABLE_BIT    4
   #define STEPPERS_DISABLE_MASK   (1<<STEPPERS_DISABLE_BIT)
 
   // Define homing/hard limit switch input pins and limit interrupt vectors.
@@ -510,9 +510,9 @@
       #define DUAL_LIMIT_BIT        3
       #define LIMIT_MASK            ((1<<X_LIMIT_BIT)|(1<<Y_LIMIT_BIT)|(1<<Z_LIMIT_BIT)|(1<<DUAL_LIMIT_BIT))
 
-      #define SPINDLE_ENABLE_DDR    DDRC
-      #define SPINDLE_ENABLE_PORT   PORTC
-      #define SPINDLE_ENABLE_BIT    1
+      #define SPINDLE_ENABLE_DDR    DDRB
+      #define SPINDLE_ENABLE_PORT   PORTB
+      #define SPINDLE_ENABLE_BIT    0
 
       // Variable spindle configuration below. Do not change unless you know what you are doing.
       // NOTE: Only used when variable spindle is enabled.
